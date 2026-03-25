@@ -1,30 +1,29 @@
-.
 ├── index.html
 ├── package-lock.json
 ├── package.json
+├── postcss.config.js
 ├── public
-│   ├── background
-│   │   └── background.js
-│   ├── icons
-│   │   ├── todoIcon128.png
-│   │   ├── todoicon128Full.jpg
-│   │   ├── todoIcon24.png
-│   │   └── todoIcon48.png
-│   └── manifest.json
+│   ├── background
+│   │   └── background.js
+│   ├── icons
+│   │   ├── todoIcon128.png
+│   │   ├── todoicon128Full.jpg
+│   │   ├── todoIcon24.png
+│   │   └── todoIcon48.png
+│   └── manifest.json
 ├── README.md
 ├── src
-│   ├── content
-│   │   └── content.js
-│   ├── index.css
-│   ├── index.jsx
-│   ├── popup
-│   │   ├── App.jsx
-│   │   ├── App.scss
-│   │   ├── App.test.js
-│   │   └── custom.scss
-│   └── utils
-│       └── storage.js
+│   ├── content
+│   │   └── content.js
+│   ├── index.css
+│   ├── main.jsx
+│   ├── popup
+│   │   ├── App.test.js
+│   │   └── Popup.jsx
+│   ├── styles
+│   │   └── globals.css
+│   └── utils
+│       └── storage.js
 ├── structure.txt
+├── tailwind.config.js
 └── vite.config.js
-
-8 directories, 20 files

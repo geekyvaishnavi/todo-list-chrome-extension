@@ -2,30 +2,26 @@
   "name": "react-extension",
   "version": "0.1.0",
   "private": true,
-
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "bootstrap": "^5.3.1",
-    "framer-motion": "^11.5.2",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
-    "react-dom": "^18.2.0",
-    "uuid": "^9.0.0"
-  },
-
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write ."
   },
-
+  "dependencies": {
+    "lucide-react": "^1.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
   "devDependencies": {
     "@types/chrome": "^0.0.243",
     "@vitejs/plugin-react": "^4.0.0",
-    "sass": "^1.66.1",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "prettier": "^3.8.1",
+    "tailwindcss": "^3.4.1",
     "vite": "^5.0.0"
   }
 }
