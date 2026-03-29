@@ -87,6 +87,9 @@ The extension will now appear in your browser.
 │   ├── main.jsx
 │   ├── popup
 │   │   ├── App.test.js
+│   │   ├── components
+│   │   ├── constants
+│   │   ├── hooks
 │   │   └── Popup.jsx
 │   ├── styles
 │   │   └── globals.css
@@ -95,6 +98,8 @@ The extension will now appear in your browser.
 ├── structure.txt
 ├── tailwind.config.js
 └── vite.config.js
+
+
 ```
 
 ---
