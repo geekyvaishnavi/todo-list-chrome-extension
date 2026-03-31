@@ -41,7 +41,7 @@ export default function TaskInput({
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Add a task..."
+          placeholder="Start typing..."
           className="flex-1 bg-transparent outline-none text-sm text-neutral-800 dark:text-neutral-200"
           onKeyDown={(e) => e.key === "Enter" && addTask()}
         />
