@@ -23,7 +23,7 @@ export default function Header({ theme, setTheme }) {
             ${
               theme === "light"
                 ? "bg-white text-black shadow-sm"
-                : "text-neutral-500 hover:text-black"
+                : "text-neutral-500 hover:text-black dark:hover:text-white"
             }
           `}
         >
