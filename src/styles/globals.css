@@ -7,10 +7,3 @@ body {
   @apply antialiased;
 }
 
-/* scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-neutral-300 dark:bg-neutral-700 rounded;
-}
