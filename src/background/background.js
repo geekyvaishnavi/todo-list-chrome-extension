@@ -36,6 +36,21 @@ chrome.windows.onCreated.addListener(() => {
   });
 });
 
+
+// init badge on install and startup
+const initBadge = () => {
+  chrome.storage.sync.get(["tasks"], (res) => {
+    const length = res.tasks?.length || 0;
+    setBadge(length ? length.toString() : "");
+  });
+};
+
+// events
+chrome.runtime.onInstalled.addListener(initBadge);
+chrome.runtime.onStartup.addListener(initBadge);
+chrome.windows.onCreated.addListener(initBadge);
+
+// storage change
 chrome.storage.onChanged.addListener((changes) => {
   const tasksChange = changes.tasks;
   if (!tasksChange) return;
