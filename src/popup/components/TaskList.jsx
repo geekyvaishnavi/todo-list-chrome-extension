@@ -22,7 +22,7 @@ export default function TaskList({
             bg-neutral-50 dark:bg-neutral-900/50
           "
         >
-          <p className="text-sm text-neutral-400">✨ No tasks yet</p>
+          <p className="text-sm text-neutral-400">👻 No tasks yet</p>
           <span className="text-xs text-neutral-300 mt-1">
             Add your first task above
           </span>
