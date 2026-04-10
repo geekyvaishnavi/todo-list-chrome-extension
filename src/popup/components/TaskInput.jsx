@@ -29,7 +29,7 @@ useLayoutEffect(() => {
   if (!el) return;
 
   if (!input) {
-    // 🔥 reset to original 1-line height
+    
     el.style.height = "auto";
     return;
   }

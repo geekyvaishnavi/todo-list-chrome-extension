@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { PRIORITIES } from "../constants/priorities";
 import { Pencil, Trash2, Circle, CheckCircle2, Check, X } from "lucide-react";
 
-export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
+export default function TaskItem({ task, toggleTaskCompletion, deleteTask, editTask }) {
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(task.task);
   const textareaRef = useRef();
@@ -64,7 +64,7 @@ export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
       "
     >
       {/* COMPLETE */}
-      <button onClick={() => toggleTask(task.uuid)} className="mt-1">
+      <button onClick={() => toggleTaskCompletion(task.uuid)} className="mt-1">
         {task.isCompleted ? (
           <CheckCircle2 size={18} className="text-green-500" />
         ) : (

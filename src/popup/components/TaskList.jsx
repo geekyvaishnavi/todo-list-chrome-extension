@@ -3,7 +3,7 @@ import TaskItem from "./TaskItem";
 export default function TaskList({
   tasks,
   filter,
-  toggleTask,
+  toggleTaskCompletion,
   deleteTask,
   editTask
 }) {
@@ -41,7 +41,7 @@ export default function TaskList({
             <TaskItem
               key={t.uuid}
               task={t}
-              toggleTask={toggleTask}
+              toggleTaskCompletion={toggleTaskCompletion}
               deleteTask={deleteTask}
               editTask={editTask}
             />
