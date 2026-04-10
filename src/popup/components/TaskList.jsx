@@ -3,7 +3,7 @@ import TaskItem from "./TaskItem";
 export default function TaskList({
   tasks,
   filter,
-  toggleTask,
+  toggleTaskCompletion,
   deleteTask,
   editTask
 }) {
@@ -22,7 +22,7 @@ export default function TaskList({
             bg-neutral-50 dark:bg-neutral-900/50
           "
         >
-          <p className="text-sm text-neutral-400">✨ No tasks yet</p>
+          <p className="text-sm text-neutral-400">👻 No tasks yet</p>
           <span className="text-xs text-neutral-300 mt-1">
             Add your first task above
           </span>
@@ -41,7 +41,7 @@ export default function TaskList({
             <TaskItem
               key={t.uuid}
               task={t}
-              toggleTask={toggleTask}
+              toggleTaskCompletion={toggleTaskCompletion}
               deleteTask={deleteTask}
               editTask={editTask}
             />

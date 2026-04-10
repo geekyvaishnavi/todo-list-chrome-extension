@@ -45,7 +45,7 @@ export const useTasks = () => {
     updateStorage(tasks.filter((t) => t.uuid !== uuid));
   };
 
-  const toggleTask = (uuid) => {
+  const toggleTaskCompletion = (uuid) => {
     updateStorage(
       tasks.map((t) =>
         t.uuid === uuid ? { ...t, isCompleted: !t.isCompleted } : t
@@ -65,7 +65,7 @@ export const useTasks = () => {
     tasks,
     addTask,
     deleteTask,
-    toggleTask,
+    toggleTaskCompletion,
     editTask
   };
 };

@@ -11,7 +11,7 @@ export default function Popup() {
   const [filter, setFilter] = useState(-1);
   const [theme, setTheme] = useState("light");
 
-  const { tasks, addTask, deleteTask, toggleTask, editTask } = useTasks();
+  const { tasks, addTask, deleteTask, toggleTaskCompletion, editTask } = useTasks();
 
   useEffect(() => {
     if (typeof chrome !== "undefined" && chrome.runtime) {
@@ -69,7 +69,7 @@ export default function Popup() {
         <TaskList
           tasks={tasks}
           filter={filter}
-          toggleTask={toggleTask}
+          toggleTaskCompletion={toggleTaskCompletion}
           deleteTask={deleteTask}
           editTask={editTask}
         />
