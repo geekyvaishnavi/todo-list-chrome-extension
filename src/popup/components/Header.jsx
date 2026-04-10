@@ -1,6 +1,6 @@
 import { Sun, Moon } from "lucide-react";
 
-export default function Header({ theme, setTheme }) {
+export default function Header({ mode, setMode }) {
   return (
     <div className="flex items-center justify-between mb-4">
       <h1 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
@@ -17,13 +17,13 @@ export default function Header({ theme, setTheme }) {
       >
         {/* LIGHT */}
         <button
-          onClick={() => setTheme("light")}
+          onClick={() => setMode("light")}
           className={`
             p-1.5 rounded-md transition-all
             ${
-              theme === "light"
+              mode === "light"
                 ? "bg-white text-black shadow-sm"
-                : "text-neutral-500 hover:text-black"
+                : "text-neutral-500 hover:text-black dark:hover:text-white"
             }
           `}
         >
@@ -32,11 +32,11 @@ export default function Header({ theme, setTheme }) {
 
         {/* DARK */}
         <button
-          onClick={() => setTheme("dark")}
+          onClick={() => setMode("dark")}
           className={`
             p-1.5 rounded-md transition-all
             ${
-              theme === "dark"
+              mode === "dark"
                 ? "bg-neutral-700 text-white shadow-sm"
                 : "text-neutral-500 hover:text-black dark:hover:text-white"
             }

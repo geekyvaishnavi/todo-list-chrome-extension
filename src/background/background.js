@@ -1,14 +1,14 @@
 // Message Handling
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
-  if (req.type === "GET_THEME") {
-    chrome.storage.sync.get(["theme"], (res) => {
-      sendResponse({ theme: res.theme || "light" });
+  if (req.type === "GET_MODE") {
+    chrome.storage.sync.get(["mode"], (res) => {
+      sendResponse({ mode: res.mode || "light" });
     });
     return true;
   }
 
-  if (req.type === "SET_THEME") {
-    chrome.storage.sync.set({ theme: req.theme }, () => {
+  if (req.type === "SET_MODE") {
+    chrome.storage.sync.set({ mode: req.mode }, () => {
       sendResponse({ success: true });
     });
     return true;

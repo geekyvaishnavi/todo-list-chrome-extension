@@ -9,36 +9,36 @@ export default function Popup() {
   const [input, setInput] = useState("");
   const [priority, setPriority] = useState(2);
   const [filter, setFilter] = useState(-1);
-  const [theme, setTheme] = useState("light");
+  const [mode, setMode] = useState("light");
 
   const { tasks, addTask, deleteTask, toggleTaskCompletion, editTask } = useTasks();
 
   useEffect(() => {
     if (typeof chrome !== "undefined" && chrome.runtime) {
-      chrome.runtime.sendMessage({ type: "GET_THEME" }, (res) => {
-        if (res?.theme) setTheme(res.theme);
+      chrome.runtime.sendMessage({ type: "GET_MODE" }, (res) => {
+        if (res?.mode) setMode(res.mode);
       });
     } else {
-      const saved = localStorage.getItem("theme");
-      if (saved) setTheme(saved);
+      const saved = localStorage.getItem("mode");
+      if (saved) setMode(saved);
     }
   }, []);
 
   useEffect(() => {
     const root = document.documentElement;
 
-    if (theme === "dark") root.classList.add("dark");
+    if (mode === "dark") root.classList.add("dark");
     else root.classList.remove("dark");
 
     if (typeof chrome !== "undefined" && chrome.runtime) {
       chrome.runtime.sendMessage({
-        type: "SET_THEME",
-        theme
+        type: "SET_MODE",
+        mode
       });
     } else {
-      localStorage.setItem("theme", theme);
+      localStorage.setItem("mode", mode);
     }
-  }, [theme]);
+  }, [mode]);
 
   return (
     <div
@@ -51,7 +51,7 @@ export default function Popup() {
       "
     >
       <div className="p-3 space-y-4">
-        <Header theme={theme} setTheme={setTheme} />
+        <Header mode={mode} setMode={setMode} />
 
         <TaskInput
           input={input}
