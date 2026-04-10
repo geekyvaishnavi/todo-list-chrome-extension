@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { Plus, ChevronDown } from "lucide-react";
 import { PRIORITIES } from "../constants/priorities";
 
@@ -18,9 +18,27 @@ export default function TaskInput({
         setOpen(false);
       }
     };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  const textareaRef = useRef();
+
+useLayoutEffect(() => {
+  const el = textareaRef.current;
+  if (!el) return;
+
+  if (!input) {
+    // 🔥 reset to original 1-line height
+    el.style.height = "auto";
+    return;
+  }
+
+  el.style.height = "0px";
+  el.style.height = el.scrollHeight + "px";
+
+  el.scrollTop = el.scrollHeight;
+}, [input]);
 
   return (
     <div className="mb-4 relative" ref={ref}>
@@ -38,12 +56,26 @@ export default function TaskInput({
         </button>
 
         {/* INPUT */}
-        <input
+        <textarea
+          ref={textareaRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add a task..."
-          className="flex-1 bg-transparent outline-none text-sm text-neutral-800 dark:text-neutral-200"
-          onKeyDown={(e) => e.key === "Enter" && addTask()}
+          className="
+    flex-1 bg-transparent outline-none text-sm
+    text-neutral-800 dark:text-neutral-200
+    resize-none
+    whitespace-pre-wrap break-words
+    max-h-24 overflow-y-auto
+    transition-all duration-100
+  "
+          rows={1}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              addTask();
+            }
+          }}
         />
 
         {/* ADD BUTTON */}

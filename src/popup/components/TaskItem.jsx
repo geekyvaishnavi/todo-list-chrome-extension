@@ -1,10 +1,42 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { PRIORITIES } from "../constants/priorities";
 import { Pencil, Trash2, Circle, CheckCircle2, Check, X } from "lucide-react";
 
 export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(task.task);
+  const textareaRef = useRef();
+
+  useEffect(() => {
+    if (!isEditing) {
+      setValue(task.task);
+    }
+  }, [task.task]);
+
+  // dynamic when editing
+  useLayoutEffect(() => {
+    if (!isEditing) return;
+
+    const el = textareaRef.current;
+    if (!el) return;
+
+    el.style.height = "0px";
+    el.style.height = el.scrollHeight + "px";
+
+    el.scrollTop = el.scrollHeight;
+  }, [value, isEditing]);
+
+  
+  // focus + move cursor to end when entering edit mode
+  useLayoutEffect(() => {
+    if (isEditing && textareaRef.current) {
+      const el = textareaRef.current;
+
+      el.focus();
+      const length = el.value.length;
+      el.setSelectionRange(length, length);
+    }
+  }, [isEditing]);
 
   const handleSave = () => {
     if (!value.trim()) {
@@ -46,6 +78,7 @@ export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
       {/* TEXT / EDIT */}
       {isEditing ? (
         <textarea
+          ref={textareaRef}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onBlur={(e) => {
@@ -61,13 +94,16 @@ export default function TaskItem({ task, toggleTask, deleteTask, editTask }) {
             if (e.key === "Escape") handleCancel();
           }}
           autoFocus
-          rows={4}
+          rows={1}
           className="
-            flex-1 text-sm resize-none
-            bg-transparent outline-none
-            text-neutral-800 dark:text-neutral-200
-            border-b border-neutral-300 dark:border-neutral-700
-          "
+          flex-1 text-sm
+          resize-none
+          bg-transparent outline-none
+          text-neutral-800 dark:text-neutral-200
+          border-b border-neutral-300 dark:border-neutral-700
+          whitespace-pre-wrap break-words
+          max-h-24 overflow-y-auto
+          transition-all duration-100"
         />
       ) : (
         <p
