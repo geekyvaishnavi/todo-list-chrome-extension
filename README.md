@@ -66,31 +66,27 @@ The extension will now appear in your browser.
 ## Project Structure
 
 ```
+├── README.md
 ├── index.html
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
 ├── public
-│   ├── background
-│   │   └── background.js
 │   ├── icons
 │   │   ├── todoIcon128.png
-│   │   ├── todoicon128Full.jpg
 │   │   ├── todoIcon24.png
-│   │   └── todoIcon48.png
+│   │   ├── todoIcon48.png
+│   │   └── todoicon128Full.jpg
 │   └── manifest.json
-├── README.md
 ├── src
-│   ├── content
-│   │   └── content.js
-│   ├── index.css
+│   ├── background
+│   │   └── background.js
 │   ├── main.jsx
 │   ├── popup
-│   │   ├── App.test.js
+│   │   ├── Popup.jsx
 │   │   ├── components
 │   │   ├── constants
-│   │   ├── hooks
-│   │   └── Popup.jsx
+│   │   └── hooks
 │   ├── styles
 │   │   └── globals.css
 │   └── utils
