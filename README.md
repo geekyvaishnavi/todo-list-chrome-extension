@@ -1,7 +1,20 @@
 # Todo Chrome Extension
 
-A simple **Todo Chrome Extension** built with **React** and **Vite**.
-This extension allows users to manage their tasks directly from the browser popup.
+A lightweight Chrome extension built using React and Vite that allows users to manage tasks directly from the browser popup.
+
+---
+
+## Overview
+
+This extension provides a simple interface for creating, updating, and managing tasks. It uses the Chrome Storage API to persist data and is designed for fast performance with minimal UI complexity.
+
+---
+
+## Features
+
+* Add, edit, and delete tasks
+* Persistent storage using Chrome Storage API
+* Responsive and minimal user interface
 
 ---
 
@@ -10,6 +23,8 @@ This extension allows users to manage their tasks directly from the browser popu
 Clone the repository and install dependencies:
 
 ```bash
+git clone <repository-url>
+cd chrome-extension
 npm install
 ```
 
@@ -23,43 +38,58 @@ Start the development server:
 npm run dev
 ```
 
-Vite will start a local development server and provide a preview URL.
-
 ---
 
 ## Build
 
-To create a production build:
+Generate a production build:
 
 ```bash
 npm run build
 ```
 
-The optimized extension build will be generated in the **`dist`** folder.
+The build output will be available in the `dist/` directory.
 
 ---
 
 ## Load the Extension in Chrome
 
-1. Build the project:
+1. Run the build command:
 
 ```bash
 npm run build
 ```
 
-2. Open Chrome and go to:
+2. Open Chrome and navigate to:
 
 ```
 chrome://extensions
 ```
 
-3. Enable **Developer Mode** (top right).
+3. Enable Developer Mode.
 
-4. Click **Load unpacked**.
+4. Click "Load unpacked".
 
-5. Select the **`dist`** folder.
+5. Select the `dist/` folder.
 
-The extension will now appear in your browser.
+---
+
+## Testing
+
+This project uses Jest and React Testing Library.
+
+Run tests using:
+
+```bash
+npm test
+```
+
+### Coverage includes:
+
+* Popup UI rendering
+* Custom hook logic (`useTasks`)
+* Background script initialization
+* Chrome API mocking
 
 ---
 
@@ -67,51 +97,59 @@ The extension will now appear in your browser.
 
 ```
 ├── README.md
-├── index.html
-├── package-lock.json
+├── __mocks__/
+│   └── chrome.js
+├── babel.config.cjs
+├── jest.config.cjs
+├── jest.setup.js
 ├── package.json
-├── postcss.config.js
-├── public
-│   ├── icons
-│   │   ├── todoIcon128.png
-│   │   ├── todoIcon24.png
-│   │   ├── todoIcon48.png
-│   │   └── todoicon128Full.jpg
+├── package-lock.json
+├── public/
+│   ├── icons/
 │   └── manifest.json
-├── src
-│   ├── background
-│   │   └── background.js
-│   ├── main.jsx
-│   ├── popup
+├── src/
+│   ├── background/
+│   │   ├── background.js
+│   │   └── background.test.js
+│   ├── popup/
 │   │   ├── Popup.jsx
-│   │   ├── components
-│   │   ├── constants
-│   │   └── hooks
-│   ├── styles
-│   │   └── globals.css
-│   └── utils
-│       └── storage.js
-├── structure.txt
+│   │   ├── Popup.test.jsx
+│   │   ├── hooks/
+│   │   │   ├── useTasks.js
+│   │   │   └── useTasks.test.js
+│   ├── styles/
+│   └── utils/
+│       ├── storage.js
+│       └── storage.test.js (recommended)
 ├── tailwind.config.js
-└── vite.config.js
-
-
+├── postcss.config.js
+├── vite.config.js
+├── index.html
 ```
 
 ---
 
 ## Scripts
 
-| Command           | Description                         |
-| ----------------- | ----------------------------------- |
-| `npm run dev`     | Starts the Vite development server  |
-| `npm run build`   | Builds the extension for production |
-| `npm run preview` | Preview the production build        |
-| `npm run format`  | Format the code                     |
+| Command           | Description                    |
+| ----------------- | ------------------------------ |
+| `npm run dev`     | Start development server       |
+| `npm run build`   | Build extension for production |
+| `npm run preview` | Preview production build       |
+| `npm test`        | Run test suite                 |
 
 ---
 
 ## Contributing
 
-Contributions are welcome.
-Feel free to fork the repository and submit a pull request with improvements.
+Contributions are welcome. Please fork the repository and submit a pull request with your changes.
+
+---
+
+## Tech Stack
+
+* React
+* Vite
+* Tailwind CSS
+* Jest
+* React Testing Library
